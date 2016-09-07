@@ -4787,12 +4787,10 @@ in
 
   icedtea7_web = callPackage ../development/compilers/icedtea-web {
     jdk = jdk7;
-    xulrunner = firefox-unwrapped;
   };
 
   icedtea8_web = callPackage ../development/compilers/icedtea-web {
     jdk = jdk8;
-    xulrunner = firefox-unwrapped;
   };
 
   icedtea_web = self.icedtea8_web;
@@ -4987,6 +4985,11 @@ in
   };
 
   mono44 = lowPrio (callPackage ../development/compilers/mono/4.4.nix {
+    inherit (darwin) libobjc;
+    inherit (darwin.apple_sdk.frameworks) Foundation;
+  });
+
+  mono46 = lowPrio (callPackage ../development/compilers/mono/4.6.nix {
     inherit (darwin) libobjc;
     inherit (darwin.apple_sdk.frameworks) Foundation;
   });
@@ -6044,11 +6047,6 @@ in
   tcl-8_6 = callPackage ../development/interpreters/tcl/8.6.nix { };
 
   wasm = callPackage ../development/interpreters/wasm { };
-
-  xulrunner = callPackage ../development/interpreters/xulrunner {
-    inherit (gnome) libIDL;
-    inherit (pythonPackages) pysqlite;
-  };
 
 
   ### DEVELOPMENT / MISC
@@ -13407,6 +13405,7 @@ in
 
   gnash = callPackage ../applications/video/gnash {
     inherit (gnome) gtkglext;
+    xulrunner = firefox-unwrapped;
   };
 
   gnome_mplayer = callPackage ../applications/video/gnome-mplayer {
@@ -14300,7 +14299,7 @@ in
 
   omxplayer = callPackage ../applications/video/omxplayer { };
 
-  oneteam = callPackage ../applications/networking/instant-messengers/oneteam {};
+  oneteam = callPackage ../applications/networking/instant-messengers/oneteam { };
 
   openbox = callPackage ../applications/window-managers/openbox { };
 
@@ -14359,7 +14358,6 @@ in
   pekwm = callPackage ../applications/window-managers/pekwm { };
 
   pencil = callPackage ../applications/graphics/pencil {
-    xulrunner = firefox-unwrapped;
   };
 
   perseus = callPackage ../applications/science/math/perseus {};
@@ -17687,4 +17685,6 @@ in
   zuki-themes = callPackage ../misc/themes/zuki { };
 
   zoom-us = qt55.callPackage ../applications/networking/instant-messengers/zoom-us {};
+
+  xulrunner = firefox-unwrapped;
 }
