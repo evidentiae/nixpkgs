@@ -7,15 +7,11 @@ in
 rec {
   firefox = common rec {
     pname = "firefox";
-    ffversion = "82.0.2";
+    ffversion = "84.0.1";
     src = fetchurl {
       url = "mirror://mozilla/firefox/releases/${ffversion}/source/firefox-${ffversion}.source.tar.xz";
-      sha512 = "25wkgsqnafmq30m1kd1axkm454dhl2bmz6100i3ccqnn31vw3nyy6k3k1apsn62siqswpm55iclzcb10y4dfyyqcszvflim47c8i37k";
+      sha512 = "0sl93h7pjiznabv6865pdbal08nlqncnv3g40l02mgwbphjh5iqrr1bz14khaf58h4v1la090cj7z0gmd0c10xfrx6z7wngm152zz75";
     };
-
-    patches = [
-      ./no-buildconfig-ffx76.patch
-    ];
 
     meta = {
       description = "A web browser built from Firefox source tree";
@@ -35,15 +31,11 @@ rec {
 
   firefox-esr-78 = common rec {
     pname = "firefox-esr";
-    ffversion = "78.4.0esr";
+    ffversion = "78.5.0esr";
     src = fetchurl {
       url = "mirror://mozilla/firefox/releases/${ffversion}/source/firefox-${ffversion}.source.tar.xz";
-      sha512 = "13640ssp1nq9dsfv8jqfw2paqk3wzwc4r47mvbhb4l9h990gzzb2chhlcjq066b7r3q9s0nq3iyk847vzi7z1yvhrhsnzfgk9g9gpnr";
+      sha512 = "20h53cn7p4dds1yfm166iwbjdmw4fkv5pfk4z0pni6x8ddjvg19imzs6ggmpnfhaji8mnlknm7xp5j7x9vi24awvdxdds5n88rh25hd";
     };
-
-    patches = [
-      ./no-buildconfig-ffx76.patch
-    ];
 
     meta = {
       description = "A web browser built from Firefox Extended Support Release source tree";

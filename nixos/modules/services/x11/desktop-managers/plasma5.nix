@@ -8,8 +8,7 @@ let
   cfg = xcfg.desktopManager.plasma5;
 
   inherit (pkgs) kdeApplications kdeFrameworks plasma5;
-  libsForQt5 = pkgs.libsForQt512;
-  qt5 = pkgs.qt512;
+  inherit (pkgs) qt5 libsForQt5;
   inherit (pkgs) writeText;
 
   pulseaudio = config.hardware.pulseaudio;
@@ -367,7 +366,7 @@ in
       security.pam.services.sddm.enableKwallet = true;
 
       xdg.portal.enable = true;
-      xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+      xdg.portal.extraPortals = [ plasma5.xdg-desktop-portal-kde ];
 
       # Update the start menu for each user that is currently logged in
       system.userActivationScripts.plasmaSetup = activationScript;
